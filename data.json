@@ -1,0 +1,19 @@
+{
+  "siteName": "Kho Cá Nhân",
+  "owner": "Hùng Hoàng",
+  "heroTitle": "Kho cá nhân của tôi",
+  "heroDesc": "Một nơi để lưu nhạc, ứng dụng, nguồn tài nguyên và các liên kết yêu thích.",
+  "ownerBio": "Personal collection",
+  "about": "Website tĩnh, tối ưu cho GitHub Pages. Nội dung có thể quản lý bằng bảng điều khiển và lưu trên thiết bị bằng LocalStorage.",
+  "music": [
+    {"id":"m1","title":"Bài nhạc mẫu","artist":"Your Artist","url":"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3","cover":""}
+  ],
+  "apps": [
+    {"id":"a1","title":"Ứng dụng mẫu","desc":"Thêm mô tả ứng dụng tại đây.","icon":"","url":"https://example.com","type":"Web"},
+    {"id":"a2","title":"Nguồn ứng dụng mẫu","desc":"Kho hoặc nguồn tải ứng dụng.","icon":"","url":"https://example.com","type":"Source"}
+  ],
+  "links": [
+    {"id":"l1","title":"GitHub","desc":"Mã nguồn website","url":"https://github.com/"},
+    {"id":"l2","title":"Telegram","desc":"Kênh của tôi","url":"https://t.me/"}
+  ]
+}
