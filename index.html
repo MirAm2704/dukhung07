@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>Kho Cá Nhân</title>
+  <meta name="description" content="Kho cá nhân - nhạc, ứng dụng, liên kết và tài nguyên.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-dot"></span><span id="siteName">Kho Cá Nhân</span></a>
+    <nav>
+      <a href="#home">Trang chủ</a>
+      <a href="#music">Nhạc</a>
+      <a href="#apps">Ứng dụng</a>
+      <a href="#links">Liên kết</a>
+    </nav>
+    <button class="icon-btn" id="editBtn" title="Quản lý nội dung">⚙️</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">PERSONAL HUB</span>
+        <h1 id="heroTitle">Kho cá nhân của tôi</h1>
+        <p id="heroDesc">Một nơi để lưu nhạc, ứng dụng, nguồn tài nguyên và các liên kết yêu thích.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#apps">Xem kho ứng dụng</a>
+          <a class="btn ghost" href="#music">Mở trình phát nhạc</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="avatar" id="avatar">H</div>
+        <div>
+          <strong id="ownerName">Hùng Hoàng</strong>
+          <small id="ownerBio">Personal collection</small>
+        </div>
+        <span class="status">● Online</span>
+      </div>
+    </section>
+
+    <section class="section" id="music">
+      <div class="section-head">
+        <div><span class="eyebrow">MUSIC</span><h2>Nhạc của tôi</h2></div>
+        <span class="count" id="musicCount"></span>
+      </div>
+      <div class="music-player">
+        <div class="cover" id="cover">♫</div>
+        <div class="player-main">
+          <div class="now-playing"><small>ĐANG PHÁT</small><strong id="nowTitle">Chưa chọn bài</strong><span id="nowArtist">—</span></div>
+          <audio id="audio" controls preload="none"></audio>
+        </div>
+      </div>
+      <div class="cards" id="musicList"></div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="section-head">
+        <div><span class="eyebrow">APPS & SOURCES</span><h2>Ứng dụng & nguồn</h2></div>
+        <span class="count" id="appCount"></span>
+      </div>
+      <div class="search-row"><input id="search" type="search" placeholder="Tìm ứng dụng, nguồn, liên kết..."></div>
+      <div class="cards" id="appList"></div>
+    </section>
+
+    <section class="section" id="links">
+      <div class="section-head">
+        <div><span class="eyebrow">LINKS</span><h2>Liên kết</h2></div>
+      </div>
+      <div class="link-grid" id="linkList"></div>
+    </section>
+
+    <section class="section about">
+      <div class="about-box">
+        <div><span class="eyebrow">ABOUT</span><h2>Về website</h2></div>
+        <p id="aboutText">Website tĩnh, tối ưu cho GitHub Pages. Nội dung có thể quản lý bằng bảng điều khiển và lưu trên thiết bị bằng LocalStorage.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><span id="copyright">© 2026 Hùng Hoàng</span><span>Built for GitHub Pages</span></footer>
+
+  <div class="modal" id="modal">
+    <div class="panel">
+      <div class="panel-head"><div><span class="eyebrow">ADMIN / EDITOR</span><h2>Quản lý kho</h2></div><button class="close" id="closeBtn">×</button></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="settings">Thông tin</button>
+        <button class="tab" data-tab="musicTab">Nhạc</button>
+        <button class="tab" data-tab="appsTab">Ứng dụng</button>
+        <button class="tab" data-tab="linksTab">Liên kết</button>
+        <button class="tab" data-tab="dataTab">Dữ liệu</button>
+      </div>
+
+      <div class="tab-content active" id="settings">
+        <label>Tên website<input id="sSiteName"></label>
+        <label>Tên hiển thị<input id="sOwner"></label>
+        <label>Mô tả<textarea id="sDesc"></textarea></label>
+        <label>Giới thiệu<textarea id="sAbout"></textarea></label>
+        <button class="btn primary full" id="saveSettings">Lưu thông tin</button>
+      </div>
+
+      <div class="tab-content" id="musicTab">
+        <form id="musicForm" class="form-grid">
+          <input type="hidden" id="mId">
+          <label>Tên bài<input id="mTitle" required></label>
+          <label>Nghệ sĩ<input id="mArtist"></label>
+          <label>Link MP3/Audio<input id="mUrl" type="url" required placeholder="https://.../music.mp3"></label>
+          <label>Ảnh bìa<input id="mCover" type="url" placeholder="https://.../cover.jpg"></label>
+          <div class="form-actions"><button class="btn primary" type="submit">Lưu bài</button><button class="btn ghost" type="button" id="mCancel">Hủy</button></div>
+        </form>
+        <div class="admin-list" id="musicAdmin"></div>
+      </div>
+
+      <div class="tab-content" id="appsTab">
+        <form id="appForm" class="form-grid">
+          <input type="hidden" id="aId">
+          <label>Tên ứng dụng<input id="aTitle" required></label>
+          <label>Mô tả<input id="aDesc"></label>
+          <label>Icon URL<input id="aIcon" type="url" placeholder="https://.../icon.png"></label>
+          <label>Link tải / mở<input id="aUrl" type="url" required></label>
+          <label>Loại<input id="aType" placeholder="iOS / Android / Web / Tool"></label>
+          <div class="form-actions"><button class="btn primary" type="submit">Lưu ứng dụng</button><button class="btn ghost" type="button" id="aCancel">Hủy</button></div>
+        </form>
+        <div class="admin-list" id="appAdmin"></div>
+      </div>
+
+      <div class="tab-content" id="linksTab">
+        <form id="linkForm" class="form-grid">
+          <input type="hidden" id="lId">
+          <label>Tên link<input id="lTitle" required></label>
+          <label>Mô tả<input id="lDesc"></label>
+          <label>URL<input id="lUrl" type="url" required></label>
+          <div class="form-actions"><button class="btn primary" type="submit">Lưu link</button><button class="btn ghost" type="button" id="lCancel">Hủy</button></div>
+        </form>
+        <div class="admin-list" id="linkAdmin"></div>
+      </div>
+
+      <div class="tab-content" id="dataTab">
+        <p class="muted">Dữ liệu chỉnh sửa được lưu trên trình duyệt. Muốn đưa thay đổi lên GitHub Pages, hãy xuất JSON rồi thay nội dung <b>data.json</b> trong repo.</p>
+        <div class="data-actions">
+          <button class="btn primary" id="exportBtn">⬇ Xuất data.json</button>
+          <label class="file-btn">⬆ Nhập data.json<input id="importFile" type="file" accept=".json,application/json"></label>
+          <button class="btn danger" id="resetBtn">Khôi phục mẫu</button>
+        </div>
+        <pre id="dataPreview"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
